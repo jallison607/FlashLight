@@ -11,7 +11,7 @@ namespace MyThreadingTest
         private Rectangle playerRect;
         private List<Point> viewPolyPie = new List<Point>();
         private List<Point> falloutPie = new List<Point>();
-        private int viewDistance = 75;
+        private int viewDistance = 50;
         private int viewDetail = 16;
         private double radRotation; //2Pi(right),pi/2(down),pi(left),3pi/2(up)
         private Color playerColor;
@@ -21,11 +21,11 @@ namespace MyThreadingTest
         private object viewBaton = new object();
         private int xAxisMoving;
         private int yAxisMoving;
-        private int speed = 4;
+        private int speed = 3;
 
         public PlayerCharacter(List<Line> tmpObstructions)
         {
-            playerRect = new Rectangle(new Point(0,0),new Size(25,25));
+            playerRect = new Rectangle(new Point(0,0),new Size(10,10));
             playerColor = Color.Blue;
             xAxisMoving = 0;
             yAxisMoving = 0;

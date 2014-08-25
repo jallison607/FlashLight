@@ -14,6 +14,7 @@ namespace MyThreadingTest
     {
         GameArea myGameArea;
         PlayerCharacter thePlayer;
+        Point _Offset = new Point(256,256);
         List<Rectangle> colBoxes = new List<Rectangle>();
         List<FancyRectangle> obstructBoxes = new List<FancyRectangle>();
         List<Line> obstructLine = new List<Line>();
@@ -42,7 +43,8 @@ namespace MyThreadingTest
             thePlayer = new PlayerCharacter(this.obstructLine);
             myGameArea = new GameArea();
             this.Controls.Add(myGameArea);
-
+            this._Offset.X = this._Offset.X - thePlayer.getPlayerRect().Width / 2;
+            this._Offset.Y = this._Offset.Y - thePlayer.getPlayerRect().Height / 2;
             myGameArea.Visible = true;
             myGameArea.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintGameArea);
             myGameArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDrawCustomRectangle);
@@ -50,8 +52,6 @@ namespace MyThreadingTest
             myGameArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDrawingRectangle);
             this.LostFocus += new System.EventHandler(stopMovement);
             //someRandomColisionRectangles();
-            this.Width = 700;
-            this.Height = 700;
             Thread t = new Thread(update);
             t.IsBackground = true;
             t.Start();
@@ -64,17 +64,20 @@ namespace MyThreadingTest
             while (true)
             {
                 Point newPoint = new Point(this.thePlayer.getXAxis(), thePlayer.getYAxis());
+                Point oldPoint = newPoint;
                 int xVel = thePlayer.getXVelocityAxis();
                 int yVel = thePlayer.getYVelocityAxis();
                 int speed = thePlayer.getSpeed();
                 if (xVel != 0)
                 {
                     newPoint.X += xVel * speed;
+                    
                 }
 
                 if (yVel != 0)
                 {
                     newPoint.Y += yVel * speed;
+                    
                 }
 
                 Point pointTry = newPoint;
@@ -87,23 +90,34 @@ namespace MyThreadingTest
                     pointTry.Y = pointTry.Y - (yVel * speed) + (yVel * tmpSpeed);
 
                 }
-
+                if (oldPoint != newPoint)
+                {
+                    _Offset.X = this.Size.Width/2 - newPoint.X;
+                    _Offset.Y = this.Size.Height/2 - newPoint.Y;
+                    this.Invalidate();
+                }
 
                 lock (myGameArea)
                 {
                     myGameArea.Invalidate();
                 }
 
-                Thread.Sleep(50);
+                Thread.Sleep(15);
 
             }
         }
 
         //###########Events
         //GameArea Events
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            myGameArea.updateLocation(this._Offset);
+            myGameArea.updateSize(this.Size);
+        }
+
         private void PaintGameArea(object sender, System.Windows.Forms.PaintEventArgs e)
         {
-
+            
             e.Graphics.FillRectangle(Brushes.Blue, thePlayer.getPlayerRect());
             foreach (Rectangle tmpCol in colBoxes)
             {
@@ -116,6 +130,7 @@ namespace MyThreadingTest
             {
                 foreach (FancyRectangle tmpObs in obstructBoxes)
                 {
+                    //e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(90, 255, 0, 0)), tmpObs.getRect());
                     e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(90, 255, 0, 0)), tmpObs.getRect());
                 }
 
@@ -144,9 +159,6 @@ namespace MyThreadingTest
                 //e.Graphics.FillPolygon(Brushes.Black, this.maskPoly.ToArray());
                 e.Graphics.FillPolygon(new SolidBrush(Color.FromArgb(50, 0, 0, 0)), this.thePlayer.getFalloutPie());
             }
-
-
-
 
         }
 
@@ -286,7 +298,18 @@ namespace MyThreadingTest
             }
             else if (keyPressed == "N")
             {
-                new NewLevel().Show();
+                this.Hide();
+                NewLevelSettings newLvlSet = new NewLevelSettings();
+                DialogResult opResult = newLvlSet.ShowDialog();
+                if (opResult == DialogResult.OK)
+                {
+                    
+                }
+                else if (opResult == DialogResult.Cancel || opResult == DialogResult.Abort)
+                {
+                    this.Show();
+                }
+                 
             }
 
             thePlayer.updateMovementDirection(tmpNewDirection);
@@ -376,6 +399,8 @@ namespace MyThreadingTest
             }
 
         }
+
+
 
     }
 }

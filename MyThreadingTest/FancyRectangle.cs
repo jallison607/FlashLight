@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace MyThreadingTest
 {
-    class FancyRectangle
+    public class FancyRectangle
     {
         private Rectangle _Rect = new Rectangle();
         private List<Line> _Lines = new List<Line>();

@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace MyThreadingTest
 {
-    class Line
+    public class Line
     {
         public Point startPoint;
         private Point endPoint;

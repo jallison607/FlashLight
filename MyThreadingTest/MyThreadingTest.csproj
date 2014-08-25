@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GameTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\GameTools.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +60,7 @@
     <Compile Include="GameArea.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GameLevel.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="LineTest.cs">
       <SubType>Form</SubType>
@@ -69,7 +74,12 @@
     <Compile Include="NewLevel.Designer.cs">
       <DependentUpon>NewLevel.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherClasses\EncrypterDecrypter.cs" />
+    <Compile Include="NewLevelSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewLevelSettings.Designer.cs">
+      <DependentUpon>NewLevelSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayerCharacter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewLevel.resx">
       <DependentUpon>NewLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewLevelSettings.resx">
+      <DependentUpon>NewLevelSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -102,7 +115,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="lib\GameTools.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

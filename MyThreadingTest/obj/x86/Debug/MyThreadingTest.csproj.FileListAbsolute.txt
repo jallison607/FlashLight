@@ -18,3 +18,16 @@ C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThread
 C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.csproj.GenerateResource.Cache
 C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.NewLevel.resources
 C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.csprojResolveAssemblyReference.cache
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.exe
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.pdb
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\bin\Debug\MyThreadingTest.exe
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\bin\Debug\MyThreadingTest.pdb
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.Form1.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.LineTest.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.Properties.Resources.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.NewLevelSettings.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\bin\Debug\GameTools.dll
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.NewLevel.resources
