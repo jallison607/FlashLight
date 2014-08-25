@@ -1,0 +1,20 @@
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.Form1.resources
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.Properties.Resources.resources
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\bin\Debug\MyThreadingTest.exe
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\bin\Debug\MyThreadingTest.pdb
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.exe
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.pdb
+C:\Users\jallison\documents\visual studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.LineTest.resources
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.exe
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.pdb
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\bin\Debug\MyThreadingTest.exe
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\bin\Debug\MyThreadingTest.pdb
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.Form1.resources
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.LineTest.resources
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.Properties.Resources.resources
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.csproj.GenerateResource.Cache
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.NewLevel.resources
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\MyThreadingTest (5)\MyThreadingTest\MyThreadingTest\obj\x86\Debug\MyThreadingTest.csprojResolveAssemblyReference.cache

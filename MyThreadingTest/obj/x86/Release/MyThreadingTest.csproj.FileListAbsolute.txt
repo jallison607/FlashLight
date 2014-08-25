@@ -1,0 +1,9 @@
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\bin\Release\MyThreadingTest.exe
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\bin\Release\MyThreadingTest.pdb
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\MyThreadingTest.Form1.resources
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\MyThreadingTest.Properties.Resources.resources
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\MyThreadingTest.exe
+C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\MyThreadingTest.pdb
