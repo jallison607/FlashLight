@@ -7,20 +7,42 @@ using GameTools.Basic;
 
 namespace MyThreadingTest
 {
+    /*
+     * Author: Joshua Allison
+     * Last Revision Date: 8/26/2014 - Added Comments
+     * 
+     * GameLevel
+     * Object used to store/retreive level data
+     * 
+     */
+
+    /// <summary>
+    /// Object used to store/retreive level data
+    /// </summary>
     public class GameLevel
     {
+        //Path of background image
         private string imagePath = string.Empty;
+
+        //List of collision boxes, Hunter Spawn points, Supernatural Spawn points, Obstruction boxes and obstruction lines
         private List<Rectangle> colBoxes = new List<Rectangle>();
         private List<Rectangle> hunterSpawns = new List<Rectangle>();
         private List<Rectangle> supernaturalSpawns = new List<Rectangle>();
         private List<FancyRectangle> obstructBoxes = new List<FancyRectangle>();
         private List<Line> obstructLines = new List<Line>();
 
+        //Basic Constructor
+        //New GameLevel, Bool pass is to provide a signature for this constructor instead of the Estring constructor
         public GameLevel(string tmpPath, bool newLevel)
         {
+            //Sets the image Path
             this.imagePath = tmpPath;
         }
 
+        /// <summary>
+        /// Constructor used when a decrypted string of the level data exsists
+        /// </summary>
+        /// <param name="EString"></param>
         public GameLevel(string EString)
         {
             
@@ -63,27 +85,56 @@ namespace MyThreadingTest
             }
 
             //Obstruct Lines
-            //Obstruct Lines needs completed
+            int numOfObstructLines = ParseItems.parseIntFrom(EString, 3);
+            for (int i = 0; i < numOfObstructLines; i++)
+            {
+                this.obstructLines.Add(new Line(EString.Substring(0,20)));
+                EString = EString.Substring(20);
+            }
         }
 
-        
 
+        //ParseRect
+        //
+        //
+
+        //
+
+        /// <summary>
+        /// Used in decrypted string constructor
+        /// parses a rectangle out of a string in the following formatt
+        /// Location.X   + Location.Y    + Rectangle.Width   + Rectangle.Height
+        ///   xxxxx      + xxxxx         + xxxxx             + xxxxx
+        /// </summary>
+        /// <param name="rectEString"></param>
+        /// <returns></returns>
         private Rectangle parseRect(string rectEString)
         {
             Point tmpPoint = new Point();
             Size tmpSize = new Size();
+            //X & Y position
             tmpPoint.X = ParseItems.parseIntFrom(rectEString, 5);
             rectEString = rectEString.Substring(5);
             tmpPoint.Y = ParseItems.parseIntFrom(rectEString, 5);
             rectEString = rectEString.Substring(5);
+
+            //Width and Height
             tmpSize.Width = ParseItems.parseIntFrom(rectEString, 5);
             rectEString = rectEString.Substring(5);
             tmpSize.Height = ParseItems.parseIntFrom(rectEString, 5);
+
+            //Create rectangle & return
             Rectangle tmpRect = new Rectangle(tmpPoint, tmpSize);
             return tmpRect;
         }
 
         //#########Encryption Methods
+        /// <summary>
+        ///Creates an encryptable string in the following format
+        ///          EachSpawn + #OfSuperSpawns    + EachSpawn + #OfObstrucBoxes   + EachBox   + #OfObstructLines  + EachLine
+        ///          xxx      + x20^n     + xxx           + x20^n     + xxx               + x20^n     + xxx               + x20^n     + xxx               + x16^n
+        /// </summary>
+        /// <returns></returns>
         public string ToEString()
         {
             string result = string.Empty;
@@ -143,10 +194,7 @@ namespace MyThreadingTest
             string obstructLinesData = string.Empty;
             foreach (Line tmpLine in obstructLines)
             {
-                obstructLinesData += ParseItems.convertToLength(tmpLine.startPoint.X, 5);
-                obstructLinesData += ParseItems.convertToLength(tmpLine.startPoint.Y, 5);
-                obstructLinesData += ParseItems.convertToLength(tmpLine.getEnd().X, 5);
-                obstructLinesData += ParseItems.convertToLength(tmpLine.getEnd().Y, 5);
+                obstructLinesData += tmpLine.ToEString();
             }
             obstructLinesData = ParseItems.convertToLength(obstructLines.Count, 3) + obstructLinesData;
             result += obstructLinesData;

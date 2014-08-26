@@ -31,10 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtLevelName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.nudWidth = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.nudHeight = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nudWidth = new System.Windows.Forms.NumericUpDown();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnFile = new System.Windows.Forms.Button();
@@ -42,8 +42,8 @@
             this.lblFileName = new System.Windows.Forms.Label();
             this.ofdBackground = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,22 +75,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Size";
             // 
-            // nudWidth
+            // nudHeight
             // 
-            this.nudWidth.Location = new System.Drawing.Point(83, 29);
-            this.nudWidth.Maximum = new decimal(new int[] {
-            2048,
+            this.nudHeight.Location = new System.Drawing.Point(81, 55);
+            this.nudHeight.Maximum = new decimal(new int[] {
+            4096,
             0,
             0,
             0});
-            this.nudWidth.Name = "nudWidth";
-            this.nudWidth.Size = new System.Drawing.Size(66, 20);
-            this.nudWidth.TabIndex = 0;
-            this.nudWidth.Value = new decimal(new int[] {
+            this.nudHeight.Name = "nudHeight";
+            this.nudHeight.Size = new System.Drawing.Size(66, 20);
+            this.nudHeight.TabIndex = 3;
+            this.nudHeight.Value = new decimal(new int[] {
             256,
             0,
             0,
             0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Height:";
             // 
             // label2
             // 
@@ -101,27 +110,18 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Width:";
             // 
-            // label3
+            // nudWidth
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 57);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Height:";
-            // 
-            // nudHeight
-            // 
-            this.nudHeight.Location = new System.Drawing.Point(83, 55);
-            this.nudHeight.Maximum = new decimal(new int[] {
-            2048,
+            this.nudWidth.Location = new System.Drawing.Point(81, 29);
+            this.nudWidth.Maximum = new decimal(new int[] {
+            4096,
             0,
             0,
             0});
-            this.nudHeight.Name = "nudHeight";
-            this.nudHeight.Size = new System.Drawing.Size(66, 20);
-            this.nudHeight.TabIndex = 3;
-            this.nudHeight.Value = new decimal(new int[] {
+            this.nudWidth.Name = "nudWidth";
+            this.nudWidth.Size = new System.Drawing.Size(66, 20);
+            this.nudWidth.TabIndex = 0;
+            this.nudWidth.Value = new decimal(new int[] {
             256,
             0,
             0,
@@ -199,8 +199,8 @@
             this.Text = "NewLevelSettings";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

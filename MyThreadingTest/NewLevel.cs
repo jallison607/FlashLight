@@ -23,7 +23,16 @@ namespace MyThreadingTest
         public NewLevel(GameLevel tmpLevel)
         {
             InitializeComponent();
-            
+            Bitmap back = tmpLevel.getBackground();
+            this.pScene.Width = back.Width;
+            this.pScene.Height = back.Height;
+            pScene.BackgroundImage = back;
+            this.colBoxes = tmpLevel.getColboxes();
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

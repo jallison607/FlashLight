@@ -120,7 +120,8 @@ namespace MyThreadingTest
             if (drawingLine)
             {
                 this.listOfLines.Add(this.activeLine);
-                this.addLineToIntersectionDictionary(this.activeLine);
+                //Depriciated for y=mx+b
+                //this.addLineToIntersectionDictionary(this.activeLine);
                 this.intersections = getIntersectionsOfLine(this.activeLine);
                 this.lblStatus.Text = "Line saved \r\n Waiting for input";
             }
@@ -200,7 +201,11 @@ namespace MyThreadingTest
             return intersections;
         }
 
-        private void addLineToIntersectionDictionary(Line tmpLine)
+       /*
+        * Depriciated code. Replaced by checking for intersection with y=mx+b 
+        * 
+        * 
+        * private void addLineToIntersectionDictionary(Line tmpLine)
         {
             //MessageBox.Show(tmpLine.occupiedPoints.Count.ToString());            
             foreach (Point tmpPoint in tmpLine.occupiedPoints)
@@ -221,7 +226,7 @@ namespace MyThreadingTest
                 }
             }
 
-        }
+        }*/
 
         private List<Point> getIntersections()
         {

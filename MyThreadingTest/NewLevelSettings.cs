@@ -21,15 +21,33 @@ namespace MyThreadingTest
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            bool passed = false;
             if (imagePath == string.Empty || txtLevelName.Text == string.Empty)
             {
                 MessageBox.Show("You must select a file and fill out a Level Name");
             }
-            else if (bground.Width != this.nudWidth.Value || bground.Height != this.nudHeight.Height)
+            else if (bground.Width != this.nudWidth.Value || bground.Height != this.nudHeight.Value)
             {
-
-            }else{
-                
+                DialogResult dialogResult = MessageBox.Show("The resolution you specified is different then that of the image, Are you sure you want to resize?", "Confirm", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    this.bground = new Bitmap(this.bground, new Size((int)this.nudWidth.Value, (int)this.nudHeight.Value));
+                    MessageBox.Show("New Width, Height : " + this.bground.Size);
+                    passed = true;
+                }
+            
+            }
+            else
+            {
+                passed = true;
+            }
+            
+            if(passed)
+            {
+                this.imagePath = "data\\" + this.txtLevelName.Text + ".jpg";
+                this.bground.Save(this.imagePath);
+                GameLevel tmpLevel = new GameLevel(imagePath, true);
+                new NewLevel(tmpLevel).Show();
             }
 
             
@@ -44,13 +62,15 @@ namespace MyThreadingTest
             {
                 try
                 {
-                    this.bground = new Bitmap(ofdBackground.OpenFile());
+                    this.bground = new Bitmap(ofdBackground.FileName);
                     this.lblFileName.Text = ofdBackground.FileName;
                     this.imagePath = ofdBackground.FileName;
+                    this.nudHeight.Value = bground.Height;
+                    this.nudWidth.Value = bground.Width;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Invalid file");
+                    MessageBox.Show("Invalid file " + ofdBackground.FileName + " " + ex.Message);
                 }
             }
 
