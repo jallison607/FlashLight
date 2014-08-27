@@ -24,7 +24,17 @@ namespace MyThreadingTest
     public class Line
     {
         public Point startPoint;
-        private Point endPoint;
+
+        private Point _endPoint;
+        /// <summary>
+        /// public read but must be updated with updateEnd() to ensure an update
+        /// rise, run and slope
+        /// </summary>
+        public Point endPoint
+        {
+            get { return this._endPoint; }
+            set { updateEnd(value); }
+        }
 
         //OptimizationFactor is used to restrict checks for lines within x distance of eachothers start points
         //AKA avoid boxes larger then 200 pixles or increase optimization factor at cost of performance
@@ -59,9 +69,11 @@ namespace MyThreadingTest
             EString = EString.Substring(4);
 
             //End Point
-            this.endPoint.X = ParseItems.parseIntFrom(EString, 5);
+            Point tmpEndPoint = new Point();
+            tmpEndPoint.X = ParseItems.parseIntFrom(EString, 5);
             EString = EString.Substring(4);
-            this.endPoint.Y = ParseItems.parseIntFrom(EString, 5);
+            tmpEndPoint.Y = ParseItems.parseIntFrom(EString, 5);
+            this.updateEnd(tmpEndPoint);
         }
 
 
@@ -78,7 +90,7 @@ namespace MyThreadingTest
             this.startPoint = start;
             this.endPoint = end;
 
-            //Calculate Rise, Run & Base
+            //Recalculate this stuff
             this.rise = endPoint.Y - startPoint.Y;
             this.run = endPoint.X - startPoint.X;
             this.baseY = startPoint.Y - ((rise / run) * startPoint.X);
@@ -114,14 +126,14 @@ namespace MyThreadingTest
         /// Sets the end of the line to a new location and re-calculates the rise, run and baseY
         /// </summary>
         /// <param name="newEnd"></param>
-        public void updateEnd(Point newEnd)
+        private void updateEnd(Point newEnd)
         {
             //Change End
-            this.endPoint = newEnd;
+            this._endPoint = newEnd;
 
             //Recalculate this stuff
-            this.rise = endPoint.Y - startPoint.Y;
-            this.run = endPoint.X - startPoint.X;
+            this.rise = _endPoint.Y - startPoint.Y;
+            this.run = _endPoint.X - startPoint.X;
             this.baseY = startPoint.Y - ((rise / run) * startPoint.X);
         }
 

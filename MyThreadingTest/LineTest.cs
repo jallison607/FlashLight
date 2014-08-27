@@ -141,7 +141,7 @@ namespace MyThreadingTest
             {
                 if (this.drawingLine)
                 {
-                    this.activeLine.updateEnd(new Point(e.X, e.Y));
+                    this.activeLine.endPoint = (new Point(e.X, e.Y));
                     this.lblStatus.Text = "Drawing a line";
                 }
                 else
