@@ -13,7 +13,8 @@ namespace MyThreadingTest
     {
         private string imagePath = string.Empty;
         private Bitmap bground;
-             
+        private GameLevel aNewLevel; 
+    
         public NewLevelSettings()
         {
             InitializeComponent();
@@ -44,10 +45,9 @@ namespace MyThreadingTest
             
             if(passed)
             {
-                this.imagePath = "data\\" + this.txtLevelName.Text + ".jpg";
-                this.bground.Save(this.imagePath);
-                GameLevel tmpLevel = new GameLevel(imagePath, true);
-                new NewLevel(tmpLevel).Show();
+                GameLevel tmpLevel = new GameLevel(this.bground, this.txtLevelName.Text);
+                this.aNewLevel = tmpLevel;
+                this.DialogResult = DialogResult.OK;
             }
 
             
@@ -90,6 +90,11 @@ namespace MyThreadingTest
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public GameLevel getGameLevel()
+        {
+            return this.aNewLevel;
         }
     }
 }

@@ -7,3 +7,16 @@ C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThread
 C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\GenerateResource.write.1.tlog
 C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\MyThreadingTest.exe
 C:\Users\jallison\Documents\Visual Studio 2010\Projects\MyThreadingTest\MyThreadingTest\obj\x86\Release\MyThreadingTest.pdb
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\bin\Release\MyThreadingTest.exe
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\bin\Release\MyThreadingTest.pdb
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\bin\Release\GameTools.dll
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\ResolveAssemblyReference.cache
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\MyThreadingTest.Form1.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\MyThreadingTest.LineTest.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\MyThreadingTest.NewLevel.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\MyThreadingTest.NewLevelSettings.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\MyThreadingTest.Properties.Resources.resources
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\GenerateResource.read.1.tlog
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\GenerateResource.write.1.tlog
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\MyThreadingTest.exe
+F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Release\MyThreadingTest.pdb

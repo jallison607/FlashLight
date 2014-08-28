@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using GameTools.Basic;
+using GameTools.Encryption;
+using System.Windows.Forms;
 
 namespace MyThreadingTest
 {
@@ -22,21 +24,28 @@ namespace MyThreadingTest
     public class GameLevel
     {
         //Path of background image
-        private string imagePath = string.Empty;
+        public string levelName;
+        public string imagePath = string.Empty;
+        public string levelPath = string.Empty;
 
         //List of collision boxes, Hunter Spawn points, Supernatural Spawn points, Obstruction boxes and obstruction lines
         private List<Rectangle> colBoxes = new List<Rectangle>();
         private List<Rectangle> hunterSpawns = new List<Rectangle>();
         private List<Rectangle> supernaturalSpawns = new List<Rectangle>();
+        private List<Rectangle> itemSpawns = new List<Rectangle>();
+        private List<Portal> portals = new List<Portal>();
         private List<FancyRectangle> obstructBoxes = new List<FancyRectangle>();
         private List<Line> obstructLines = new List<Line>();
 
         //Basic Constructor
         //New GameLevel, Bool pass is to provide a signature for this constructor instead of the Estring constructor
-        public GameLevel(string tmpPath, bool newLevel)
+        public GameLevel(Bitmap tmpBack, string newLevelName)
         {
             //Sets the image Path
-            this.imagePath = tmpPath;
+            this.imagePath = "data\\" + newLevelName + ".jpg";
+            this.levelName = newLevelName;
+            this.levelPath = "data\\" + newLevelName + ".jlv";
+            tmpBack.Save(imagePath);
         }
 
         /// <summary>
@@ -45,7 +54,7 @@ namespace MyThreadingTest
         /// <param name="EString"></param>
         public GameLevel(string EString)
         {
-            
+
             //Image Path
             int pathLength = ParseItems.parseIntFrom(EString, 3);
             EString = EString.Substring(3);
@@ -54,7 +63,8 @@ namespace MyThreadingTest
 
             //Col Boxes
             int numOfColBoxes = ParseItems.parseIntFrom(EString, 3);
-            for (int i = 0; i < numOfColBoxes;  i++ )
+            EString = EString.Substring(3);
+            for (int i = 0; i < numOfColBoxes; i++)
             {
                 colBoxes.Add(parseRect(EString.Substring(0, 20)));
                 EString = EString.Substring(20);
@@ -62,22 +72,43 @@ namespace MyThreadingTest
 
             //HunterSpawns Boxes
             int numOfHSpawnBoxes = ParseItems.parseIntFrom(EString, 3);
+            EString = EString.Substring(3);
             for (int i = 0; i < numOfHSpawnBoxes; i++)
             {
-                hunterSpawns.Add(parseRect(EString.Substring(0,20)));
+                hunterSpawns.Add(parseRect(EString.Substring(0, 20)));
                 EString = EString.Substring(20);
             }
 
-            //SupernaturalSpawns
+            //Supernatural Spawns
             int numOfSSpawnBoxes = ParseItems.parseIntFrom(EString, 3);
+            EString = EString.Substring(3);
             for (int i = 0; i < numOfSSpawnBoxes; i++)
             {
                 supernaturalSpawns.Add(parseRect(EString.Substring(0, 20)));
                 EString = EString.Substring(20);
             }
 
+            //Item Spawns
+            int numOfItemSpawns = ParseItems.parseIntFrom(EString, 3);
+            EString = EString.Substring(3);
+            for (int i = 0; i < numOfItemSpawns; i++)
+            {
+                itemSpawns.Add(parseRect(EString.Substring(0, 20)));
+                EString = EString.Substring(20);
+            }
+
+            //Portals
+            int numOfPortals = ParseItems.parseIntFrom(EString, 3);
+            EString = EString.Substring(3);
+            for (int i = 0; i < numOfPortals; i++)
+            {
+                portals.Add(new Portal(EString.Substring(0, 26)));
+                EString = EString.Substring(26);
+            }
+
             //ObstructBoxes
             int numOfObstructBoxes = ParseItems.parseIntFrom(EString, 3);
+            EString = EString.Substring(3);
             for (int i = 0; i < numOfObstructBoxes; i++)
             {
                 obstructBoxes.Add(new FancyRectangle(parseRect(EString.Substring(0, 20))));
@@ -86,9 +117,10 @@ namespace MyThreadingTest
 
             //Obstruct Lines
             int numOfObstructLines = ParseItems.parseIntFrom(EString, 3);
+            EString = EString.Substring(3);
             for (int i = 0; i < numOfObstructLines; i++)
             {
-                this.obstructLines.Add(new Line(EString.Substring(0,20)));
+                this.obstructLines.Add(new Line(EString.Substring(0, 20)));
                 EString = EString.Substring(20);
             }
         }
@@ -178,6 +210,27 @@ namespace MyThreadingTest
             supernaturalSpawnsData = ParseItems.convertToLength(supernaturalSpawns.Count, 3) + supernaturalSpawnsData;
             result += supernaturalSpawnsData;
 
+            //supernaturalSpawns
+            string itemSpawnData = string.Empty;
+            foreach (Rectangle tmpRect in itemSpawns)
+            {
+                itemSpawnData += ParseItems.convertToLength(tmpRect.X, 5);
+                itemSpawnData += ParseItems.convertToLength(tmpRect.Y, 5);
+                itemSpawnData += ParseItems.convertToLength(tmpRect.Width, 5);
+                itemSpawnData += ParseItems.convertToLength(tmpRect.Height, 5);
+            }
+            itemSpawnData = ParseItems.convertToLength(itemSpawns.Count, 3) + itemSpawnData;
+            result += itemSpawnData;
+
+            //supernaturalSpawns
+            string portalsData = string.Empty;
+            foreach (Portal tmpPortal in portals)
+            {
+                portalsData += tmpPortal.ToEString();
+            }
+            portalsData = ParseItems.convertToLength(portals.Count, 3) + portalsData;
+            result += portalsData;
+
             //obstructBoxes
             string obstructBoxesData = string.Empty;
             foreach (FancyRectangle tmpRect in obstructBoxes)
@@ -213,6 +266,34 @@ namespace MyThreadingTest
         {
             return this.colBoxes;
         }
+
+        public List<Rectangle> getHunterSpawns()
+        {
+            return this.hunterSpawns;
+        }
+
+        public List<Rectangle> getSupernaturalSpawns()
+        {
+            return this.supernaturalSpawns;
+        }
+
+        public List<Rectangle> getItemSpawns()
+        {
+            return this.itemSpawns;
+        }
+
+        public List<Portal> getPortals()
+        {
+            return this.portals;
+        }
+
+        /*
+         * public List<Rectangle> getItemSpawns()
+        {
+            return new List<Rectangle>();
+        }
+         *
+         */
 
         public List<Line> getObstructionLines()
         {
@@ -263,6 +344,43 @@ namespace MyThreadingTest
         public void removeObsBox(FancyRectangle tmpObstruction)
         {
             obstructBoxes.Remove(tmpObstruction);
+        }
+
+        public void addItemSpawn(Rectangle tmpSpawn)
+        {
+            itemSpawns.Add(tmpSpawn);
+        }
+
+        public void removeItemSpawn(Rectangle tmpSpawn)
+        {
+            itemSpawns.Remove(tmpSpawn);
+        }
+
+        public void addPortal(Portal tmpPort)
+        {
+            this.portals.Add(tmpPort);
+        }
+
+        public void removePortal(Portal tmpPortal)
+        {
+            Portal tmpLinked = new Portal(-1,tmpPortal.linkedPortalID,new Rectangle());
+
+            foreach (Portal tmpOtherPortal in portals)
+            {
+                if (tmpOtherPortal.linkedPortalID == tmpPortal.linkedPortalID)
+                {
+                    tmpLinked = tmpOtherPortal;
+                }
+            }
+
+            DialogResult tmpResult = MessageBox.Show("This will remove portal " + tmpLinked.portalID + " as well. Are you sure?", "Confirm", MessageBoxButtons.YesNo);
+
+            if (tmpResult == DialogResult.OK)
+            {
+                this.portals.Remove(tmpPortal);
+                this.portals.Remove(tmpLinked);
+            }
+
         }
 
     }

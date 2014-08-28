@@ -45,8 +45,15 @@
             this.btnSSpawn = new System.Windows.Forms.ToolStripButton();
             this.btnISpawn = new System.Windows.Forms.ToolStripButton();
             this.btnPortal = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pMenu = new System.Windows.Forms.Panel();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.pViewOptions = new System.Windows.Forms.Panel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -55,10 +62,13 @@
             this.btnViewColObs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnViewEvents = new System.Windows.Forms.ToolStripButton();
+            this.fdOpen = new System.Windows.Forms.OpenFileDialog();
             this.tlpMain.SuspendLayout();
             this.pControls.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pMenu.SuspendLayout();
+            this.mainMenu.SuspendLayout();
+            this.pViewOptions.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,8 +79,8 @@
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpMain.Controls.Add(this.pEditor, 1, 1);
             this.tlpMain.Controls.Add(this.pControls, 0, 1);
-            this.tlpMain.Controls.Add(this.panel1, 0, 0);
-            this.tlpMain.Controls.Add(this.panel2, 1, 0);
+            this.tlpMain.Controls.Add(this.pMenu, 0, 0);
+            this.tlpMain.Controls.Add(this.pViewOptions, 1, 0);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
@@ -226,21 +236,77 @@
             this.btnPortal.Text = "Portal";
             this.btnPortal.Click += new System.EventHandler(this.btnPortal_Click);
             // 
-            // panel1
+            // pMenu
             // 
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(144, 24);
-            this.panel1.TabIndex = 2;
+            this.pMenu.Controls.Add(this.mainMenu);
+            this.pMenu.Location = new System.Drawing.Point(3, 3);
+            this.pMenu.Name = "pMenu";
+            this.pMenu.Size = new System.Drawing.Size(144, 24);
+            this.pMenu.TabIndex = 2;
             // 
-            // panel2
+            // mainMenu
             // 
-            this.panel2.Controls.Add(this.toolStrip2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(153, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(498, 24);
-            this.panel2.TabIndex = 3;
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(144, 24);
+            this.mainMenu.TabIndex = 0;
+            this.mainMenu.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNew,
+            this.tsmiOpen,
+            this.tsmiSave,
+            this.tsmiSaveAs,
+            this.tsmiExit});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // tsmiNew
+            // 
+            this.tsmiNew.Name = "tsmiNew";
+            this.tsmiNew.Size = new System.Drawing.Size(114, 22);
+            this.tsmiNew.Text = "New";
+            this.tsmiNew.Click += new System.EventHandler(this.tsmiNew_Click);
+            // 
+            // tsmiOpen
+            // 
+            this.tsmiOpen.Name = "tsmiOpen";
+            this.tsmiOpen.Size = new System.Drawing.Size(114, 22);
+            this.tsmiOpen.Text = "Open";
+            this.tsmiOpen.Click += new System.EventHandler(this.tsmiOpen_Click);
+            // 
+            // tsmiSave
+            // 
+            this.tsmiSave.Name = "tsmiSave";
+            this.tsmiSave.Size = new System.Drawing.Size(114, 22);
+            this.tsmiSave.Text = "Save";
+            this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
+            // 
+            // tsmiSaveAs
+            // 
+            this.tsmiSaveAs.Name = "tsmiSaveAs";
+            this.tsmiSaveAs.Size = new System.Drawing.Size(114, 22);
+            this.tsmiSaveAs.Text = "Save As";
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(114, 22);
+            this.tsmiExit.Text = "Exit";
+            // 
+            // pViewOptions
+            // 
+            this.pViewOptions.Controls.Add(this.toolStrip2);
+            this.pViewOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pViewOptions.Location = new System.Drawing.Point(153, 3);
+            this.pViewOptions.Name = "pViewOptions";
+            this.pViewOptions.Size = new System.Drawing.Size(498, 24);
+            this.pViewOptions.TabIndex = 3;
             // 
             // toolStrip2
             // 
@@ -312,21 +378,33 @@
             this.btnViewEvents.Text = "Events";
             this.btnViewEvents.Click += new System.EventHandler(this.btnViewEvents_Click);
             // 
+            // fdOpen
+            // 
+            this.fdOpen.FileName = "openFileDialog1";
+            this.fdOpen.Filter = "Level Files (*.jlv)|*.jlv";
+            this.fdOpen.InitialDirectory = "data\\";
+            // 
             // NewLevel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(654, 550);
             this.Controls.Add(this.tlpMain);
+            this.MainMenuStrip = this.mainMenu;
             this.Name = "NewLevel";
             this.Text = "NewLevel";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewLevel_FormClosing);
             this.tlpMain.ResumeLayout(false);
             this.pControls.ResumeLayout(false);
             this.pControls.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pMenu.ResumeLayout(false);
+            this.pMenu.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
+            this.pViewOptions.ResumeLayout(false);
+            this.pViewOptions.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -349,8 +427,8 @@
         private System.Windows.Forms.ToolStripButton btnSSpawn;
         private System.Windows.Forms.ToolStripButton btnISpawn;
         private System.Windows.Forms.ToolStripButton btnPortal;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pMenu;
+        private System.Windows.Forms.Panel pViewOptions;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnViewAll;
         private System.Windows.Forms.ToolStripButton btnViewColObs;
@@ -361,5 +439,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.MenuStrip mainMenu;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNew;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSave;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSaveAs;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiOpen;
+        private System.Windows.Forms.OpenFileDialog fdOpen;
     }
 }

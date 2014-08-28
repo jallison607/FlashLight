@@ -462,7 +462,7 @@ namespace MyThreadingTest
                 //Hide this window
                 this.Hide();
                 //Create a new level setting dialog and show it
-                NewLevelSettings newLvlSet = new NewLevelSettings();
+                NewLevel newLvlSet = new NewLevel();
                 DialogResult opResult = newLvlSet.ShowDialog();
                 if (opResult == DialogResult.OK)
                 {
