@@ -22,6 +22,8 @@ namespace MyThreadingTest
         //Drawing
         private Line tmpDiagLine = new Line();
         private bool Drawing = false;
+        private bool Deleting = false;
+        private bool DrawingDeleteBox = false;
         private bool DrawingAnotherPortal = false;
         private bool ColnVisVisable = true;
         private bool eventsVisable = true;
@@ -114,7 +116,10 @@ namespace MyThreadingTest
         {
             while (true)
             {
-                pEditor.Controls[0].Invalidate();  
+                if (!Deleting)
+                {
+                    pEditor.Controls[0].Invalidate();
+                }
                 Thread.Sleep(15);
             }
         }
@@ -273,6 +278,12 @@ namespace MyThreadingTest
                 Brush tmpBrush = new SolidBrush(Color.FromArgb(50, 192, 192, 192));
                 e.Graphics.FillRectangle(tmpBrush, currentDrawingRect());
             }
+
+            if (DrawingDeleteBox)
+            {
+                Brush tmpBrush = new SolidBrush(Color.Red);
+                e.Graphics.FillRectangle(tmpBrush, currentDrawingRect());
+            }
             /*
              * 
              * List<Rectangle> colBoxes = new List<Rectangle>();
@@ -349,17 +360,29 @@ namespace MyThreadingTest
 
         private void myGameArea_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!Drawing)
+            if (rCreate.Checked)
             {
-                Drawing = true;
-                tmpDiagLine.startPoint = e.Location;
-                tmpDiagLine.endPoint = e.Location;
+                if (!Drawing)
+                {
+                    Drawing = true;
+                    tmpDiagLine.startPoint = e.Location;
+                    tmpDiagLine.endPoint = e.Location;
+                }
+            }
+            else if (rRemove.Checked)
+            {
+                if (!DrawingDeleteBox)
+                {
+                    DrawingDeleteBox = true;
+                    tmpDiagLine.startPoint = e.Location;
+                    tmpDiagLine.endPoint = e.Location;
+                }
             }
         }
 
         private void myGameArea_MouseMove(object sender, MouseEventArgs e)
         {
-            if (Drawing)
+            if (Drawing || DrawingDeleteBox)
             {
                 tmpDiagLine.endPoint = e.Location;
             }
@@ -414,8 +437,139 @@ namespace MyThreadingTest
                         }
                         break;
                 }
-
                 tmpDiagLine = new Line();
+            }
+            else if (DrawingDeleteBox)
+            {
+                Deleting = true;
+                removeRect();
+                Deleting = false;
+                DrawingDeleteBox = false;
+                tmpDiagLine = new Line();
+            }
+        }
+
+        private void removeRect()
+        {
+            Rectangle tmpRect = currentDrawingRect();
+            List<Rectangle> toRemoveRect = new List<Rectangle>();
+            List<FancyRectangle> toRemoveFRect = new List<FancyRectangle>();
+            List<Portal> toRemovePortal = new List<Portal>();
+            switch (this.typeOfDrawing)
+            {
+                case 0://remove collision & vision boxes in area
+                    foreach (Rectangle tmpCRect in this.currentLevel.getColboxes())
+                    {
+                        if (tmpRect.IntersectsWith(tmpCRect))
+                        {
+                            toRemoveRect.Add(tmpCRect);
+                        }
+                    }
+                    foreach (FancyRectangle tmpVRect in this.currentLevel.getObstructionBoxes())
+                    {
+                        if (tmpVRect.getRect().IntersectsWith(tmpRect))
+                        {
+                            toRemoveFRect.Add(tmpVRect);
+                        }
+                    }
+
+                    foreach (Rectangle tmpCRect in toRemoveRect)
+                    {
+                        this.currentLevel.removeColBox(tmpCRect);
+                    }
+
+                    foreach (FancyRectangle tmpFRect in toRemoveFRect)
+                    {
+                        this.currentLevel.removeObsBox(tmpFRect);
+                    }
+                    break;
+                case 1://remove collision boxes in area
+                    foreach (Rectangle tmpCRect in this.currentLevel.getColboxes())
+                    {
+                        if (tmpRect.IntersectsWith(tmpCRect))
+                        {
+                            toRemoveRect.Add(tmpCRect);
+                        }
+                    }
+
+                    foreach (Rectangle tmpCRect in toRemoveRect)
+                    {
+                        this.currentLevel.removeColBox(tmpCRect);
+                    }
+                    break;
+                case 2://remove vision boxes in area
+                    foreach (FancyRectangle tmpVRect in this.currentLevel.getObstructionBoxes())
+                    {
+                        if (tmpVRect.getRect().IntersectsWith(tmpRect))
+                        {
+                            toRemoveFRect.Add(tmpVRect);
+                        }
+                    }
+
+                    foreach (FancyRectangle tmpFRect in toRemoveFRect)
+                    {
+                        this.currentLevel.removeObsBox(tmpFRect);
+                    }
+                    break;
+                case 3://remove hunter spawns in area
+                    foreach (Rectangle tmpHRect in this.currentLevel.getHunterSpawns())
+                    {
+                        if (tmpRect.IntersectsWith(tmpHRect))
+                        {
+                            toRemoveRect.Add(tmpHRect);
+                        }
+                    }
+
+                    foreach (Rectangle tmpHRect in toRemoveRect)
+                    {
+                        this.currentLevel.removeHunterSpawn(tmpHRect);
+                    }
+                    break;
+                case 4://remove supernatural spawns in area
+                    foreach (Rectangle tmpSRect in this.currentLevel.getSupernaturalSpawns())
+                    {
+                        if (tmpRect.IntersectsWith(tmpSRect))
+                        {
+                            toRemoveRect.Add(tmpSRect);
+                        }
+                    }
+
+                    foreach (Rectangle tmpSRect in toRemoveRect)
+                    {
+                        this.currentLevel.removeSupernaturalSpawn(tmpSRect);
+                    }
+                    break;
+                case 5://remove items in area
+                    foreach (Rectangle tmpIRect in this.currentLevel.getItemSpawns())
+                    {
+                        if (tmpRect.IntersectsWith(tmpIRect))
+                        {
+                            toRemoveRect.Add(tmpIRect);
+                        }
+                    }
+
+                    foreach (Rectangle tmpIRect in toRemoveRect)
+                    {
+                        this.currentLevel.removeItemSpawn(tmpIRect);
+                    }
+                    break;
+                case 6://remove portals in area && any linked portals
+                    foreach (Portal tmpPort in this.currentLevel.getPortals())
+                    {
+                        if (tmpRect.IntersectsWith(tmpPort.portalRect))
+                        {
+                            if (!toRemovePortal.Contains(tmpPort))
+                            {
+                                toRemovePortal.Add(tmpPort);
+                            }
+                        }
+                    }
+
+                    foreach (Portal tmpPort in toRemovePortal)
+                    {
+                        this.currentLevel.removePortal(tmpPort);
+                    }
+                    break;
             }
         }
 

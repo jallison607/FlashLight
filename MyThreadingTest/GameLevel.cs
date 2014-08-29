@@ -367,7 +367,7 @@ namespace MyThreadingTest
 
             foreach (Portal tmpOtherPortal in portals)
             {
-                if (tmpOtherPortal.linkedPortalID == tmpPortal.linkedPortalID)
+                if (tmpOtherPortal.portalID == tmpPortal.linkedPortalID)
                 {
                     tmpLinked = tmpOtherPortal;
                 }
@@ -375,7 +375,7 @@ namespace MyThreadingTest
 
             DialogResult tmpResult = MessageBox.Show("This will remove portal " + tmpLinked.portalID + " as well. Are you sure?", "Confirm", MessageBoxButtons.YesNo);
 
-            if (tmpResult == DialogResult.OK)
+            if (tmpResult == DialogResult.Yes)
             {
                 this.portals.Remove(tmpPortal);
                 this.portals.Remove(tmpLinked);

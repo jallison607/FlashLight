@@ -63,6 +63,9 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnViewEvents = new System.Windows.Forms.ToolStripButton();
             this.fdOpen = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rCreate = new System.Windows.Forms.RadioButton();
+            this.rRemove = new System.Windows.Forms.RadioButton();
             this.tlpMain.SuspendLayout();
             this.pControls.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -70,6 +73,7 @@
             this.mainMenu.SuspendLayout();
             this.pViewOptions.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -102,6 +106,7 @@
             // pControls
             // 
             this.pControls.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pControls.Controls.Add(this.groupBox1);
             this.pControls.Controls.Add(this.toolStrip1);
             this.pControls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pControls.Location = new System.Drawing.Point(3, 33);
@@ -384,6 +389,40 @@
             this.fdOpen.Filter = "Level Files (*.jlv)|*.jlv";
             this.fdOpen.InitialDirectory = "data\\";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rRemove);
+            this.groupBox1.Controls.Add(this.rCreate);
+            this.groupBox1.Location = new System.Drawing.Point(7, 241);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(117, 70);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Mode";
+            // 
+            // rCreate
+            // 
+            this.rCreate.AutoSize = true;
+            this.rCreate.Checked = true;
+            this.rCreate.Location = new System.Drawing.Point(7, 20);
+            this.rCreate.Name = "rCreate";
+            this.rCreate.Size = new System.Drawing.Size(56, 17);
+            this.rCreate.TabIndex = 0;
+            this.rCreate.TabStop = true;
+            this.rCreate.Text = "Create";
+            this.rCreate.UseVisualStyleBackColor = true;
+
+            // 
+            // rRemove
+            // 
+            this.rRemove.AutoSize = true;
+            this.rRemove.Location = new System.Drawing.Point(7, 40);
+            this.rRemove.Name = "rRemove";
+            this.rRemove.Size = new System.Drawing.Size(65, 17);
+            this.rRemove.TabIndex = 1;
+            this.rRemove.Text = "Remove";
+            this.rRemove.UseVisualStyleBackColor = true;
+            // 
             // NewLevel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,6 +446,8 @@
             this.pViewOptions.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -447,5 +488,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
         private System.Windows.Forms.ToolStripMenuItem tsmiOpen;
         private System.Windows.Forms.OpenFileDialog fdOpen;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rRemove;
+        private System.Windows.Forms.RadioButton rCreate;
     }
 }

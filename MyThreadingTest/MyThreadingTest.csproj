@@ -81,6 +81,7 @@
       <DependentUpon>NewLevelSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerCharacter.cs" />
+    <Compile Include="PlayerClasses\Player.cs" />
     <Compile Include="Portal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
