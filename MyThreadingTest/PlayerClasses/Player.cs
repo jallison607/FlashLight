@@ -8,13 +8,9 @@ namespace MyThreadingTest.PlayerClasses
 {
     class Player
     {
-        private int _ID;
-        private string _name;
-        private Point _centerPoint;
-        //private CharacterClass currentClass;
-        //private
-        //private string _className
-                
-
+        //private int _ID;
+        //private string _name;
+        //private Point _centerPoint;
+        
     }
 }
