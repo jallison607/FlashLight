@@ -475,6 +475,11 @@ namespace MyThreadingTest
                 }
                  
             }
+            //If the player pressed L
+            else if (keyPressed == "L")
+            {
+
+            }
 
             thePlayer.updateMovementDirection(tmpNewDirection);
         }

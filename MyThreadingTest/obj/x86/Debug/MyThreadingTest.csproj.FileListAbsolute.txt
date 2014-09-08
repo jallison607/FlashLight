@@ -31,3 +31,15 @@ F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\Generate
 F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.NewLevelSettings.resources
 F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\bin\Debug\GameTools.dll
 F:\Visual Studio 2010 Projects\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.NewLevel.resources
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.exe
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.pdb
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\bin\Debug\MyThreadingTest.exe
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\bin\Debug\MyThreadingTest.pdb
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\bin\Debug\GameTools.dll
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.csprojResolveAssemblyReference.cache
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.Form1.resources
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.LineTest.resources
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.NewLevel.resources
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.NewLevelSettings.resources
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.Properties.Resources.resources
+C:\Users\Josh\Documents\GitHub\FlashLight\MyThreadingTest\obj\x86\Debug\MyThreadingTest.csproj.GenerateResource.Cache
